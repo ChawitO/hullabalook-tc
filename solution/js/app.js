@@ -8,7 +8,7 @@ var app = new Vue({
       seconds: 0,
       timer: '00 : 00s',
       intervalId: null,
-      currentlySelected: '',
+      activeProduct: '',
       productsSolved: [],
       score: 0,
       datas: [
@@ -50,11 +50,11 @@ var app = new Vue({
       clearInterval(this.intervalId)
     },
     handleProductClick(product) {
-      this.currentlySelected = product
+      this.activeProduct = product
     },
     handleBrandClick(brand) {
-      const isMatched = brand === this.currentlySelected
-      console.log(`${brand} === ${this.currentlySelected} ? => ${isMatched}`)
+      const isMatched = brand === this.activeProduct
+      console.log(`${brand} === ${this.activeProduct} ? => ${isMatched}`)
 
       if (!isMatched) return null
       this.score++
