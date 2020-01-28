@@ -28,10 +28,12 @@
         <div class="timer">{{ timer }}</div>
         <div class="product">
           <product
-            v-for="data in datas"
-            v-bind:key="data.image"
-            v-bind:image="data.image"
-            v-bind:brand="data.brand"
+            v-for="{image, brand} in datas"
+            v-bind:key="image"
+            v-bind:image="image"
+            v-bind:brand="brand"
+            v-bind:solved="productsSolved.includes(brand)"
+            v-bind:active-product="activeProduct"
             @product-clicked="handleProductClick"
           ></product>
         </div>
@@ -39,9 +41,9 @@
 
       <section class="brand-wrapper">
         <brand
-          v-for="data in datas"
-          v-bind:key="data.brand"
-          v-bind:brand="data.brand"
+          v-for="{brand} in datas"
+          v-bind:key="brand"
+          v-bind:brand="brand"
           @brand-clicked="handleBrandClick"
         ></brand>
       </section>
