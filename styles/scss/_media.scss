@@ -1,0 +1,63 @@
+@media only screen and (max-width: 820px) {
+  .product-wrapper > .product > div {
+    width: 150px;
+    height: 150px;
+  }
+
+  .brand-wrapper > img {
+    width: 150px;
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .product-wrapper > .product > div {
+    width: 120px;
+    height: 120px;
+  }
+
+  .brand-wrapper > img {
+    width: 120px;
+    height: 72px;
+  }
+}
+
+// mobile phone
+@media only screen and (max-width: 480px) {
+  .header {
+    padding: 20px 0;
+
+    & > h2 {
+      font-size: 20px;
+    }
+
+    & > p, * {
+      font-size: 14px;
+    }
+
+  }
+
+  .product-wrapper {
+
+    & > .timer {
+      height: 30px;
+    }
+
+    & > .product {
+      padding-bottom: 30px;
+
+      & > div {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+
+
+  .brand-wrapper > img {
+    width: 80px;
+    height: 48px;
+    padding: 0;
+  }
+}
