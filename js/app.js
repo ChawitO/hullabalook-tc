@@ -51,17 +51,25 @@ var app = new Vue({
     stop() {
       this.isActive = false
       clearInterval(this.intervalId)
+      this.intervalId = null
     },
     handleProductClick(product) {
       this.activeProduct = product
+
+      // Begins timer if it hasn't begun
+      if (!this.intervalId) this.start()
     },
     handleBrandClick(brand) {
       const isMatched = brand === this.activeProduct
       console.log(`${brand} === ${this.activeProduct} ? => ${isMatched}`)
 
+      // If it is a match, update the score
       if (!isMatched) return null
       this.score++
       this.productsSolved.push(brand)
+
+      // If all were matched, stop the timer
+      if (this.productsSolved.length === this.products.length) this.stop()
     },
     fisherYatesShuffle(arr) {
       let m = arr.length, temp, i
