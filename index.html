@@ -28,7 +28,7 @@
         <div class="timer">{{ timer }}</div>
         <div class="product">
           <product
-            v-for="{image, brand} in datas"
+            v-for="{image, brand} in products"
             v-bind:key="image"
             v-bind:image="image"
             v-bind:brand="brand"
@@ -41,7 +41,7 @@
 
       <section class="brand-wrapper">
         <brand
-          v-for="{brand} in datas"
+          v-for="{brand} in brands"
           v-bind:key="brand"
           v-bind:brand="brand"
           @brand-clicked="handleBrandClick"
