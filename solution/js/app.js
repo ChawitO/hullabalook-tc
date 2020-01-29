@@ -1,3 +1,22 @@
+const productDatas = [
+  {
+    'image': 'https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto,fl_lossy/6a48858b62374aed8449a8af011d27ba_9366/Lite_Racer_CLN_Shoes_Blue_B96566_01_standard.jpg',
+    'brand': 'adidas'
+  },
+  {
+    'image': 'https://assets.reebok.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/4021a46ba05b476a8014a99801073e1d_9366/Reebok_CrossFit_Nano_8_Flexweave_Blue_DV5331_01_standard.jpg',
+    'brand': 'reebok'
+  },
+  {
+    'image': 'https://i1.adis.ws/i/jpl/jd_214003_a?qlt=80&w=600&h=425&v=1&fmt=webp',
+    'brand': 'nike'
+  },
+  {
+    'image': 'https://nb.scene7.com/is/image/NB/mcruznn2_nb_02_i?$pdpPictLG2x$&fmt=webp',
+    'brand': 'new_balance'
+  }
+]
+
 var app = new Vue({
   el: '#app',
 
@@ -11,24 +30,8 @@ var app = new Vue({
       activeProduct: '',
       productsSolved: [],
       score: 0,
-      datas: [
-        {
-          'image': 'https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto,fl_lossy/6a48858b62374aed8449a8af011d27ba_9366/Lite_Racer_CLN_Shoes_Blue_B96566_01_standard.jpg',
-          'brand': 'adidas'
-        },
-        {
-          'image': 'https://assets.reebok.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/4021a46ba05b476a8014a99801073e1d_9366/Reebok_CrossFit_Nano_8_Flexweave_Blue_DV5331_01_standard.jpg',
-          'brand': 'reebok'
-        },
-        {
-          'image': 'https://i1.adis.ws/i/jpl/jd_214003_a?qlt=80&w=600&h=425&v=1&fmt=webp',
-          'brand': 'nike'
-        },
-        {
-          'image': 'https://nb.scene7.com/is/image/NB/mcruznn2_nb_02_i?$pdpPictLG2x$&fmt=webp',
-          'brand': 'new_balance'
-        }
-      ]
+      products: this.fisherYatesShuffle(productDatas),
+      brands: this.fisherYatesShuffle(productDatas)
     }
   },
 
@@ -59,6 +62,24 @@ var app = new Vue({
       if (!isMatched) return null
       this.score++
       this.productsSolved.push(brand)
+    },
+    fisherYatesShuffle(arr) {
+      let m = arr.length, temp, i
+
+      // make new array, so original array is not changed
+      arr = arr.slice()
+
+      while (m) {
+        // Pick random element
+        i = Math.floor(Math.random() * m--)
+
+        // Swap with the current element
+        temp = arr[m]
+        arr[m] = arr[i]
+        arr[i] = temp
+      }
+
+      return arr
     }
   }
 
